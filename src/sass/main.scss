@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'TTFors';
+    src: local('TTFors'), url(../fonts/TTFors-Bold.woff2);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'TTFors';
+    src: local('TTFors'), url(../fonts/TTFors-Regular.woff2);
+    font-weight: 400;
+    
+}
+
+@font-face {
+    font-family: 'TTFors';
+    src: local('TTFors'), url(../fonts/TTFors-Medium.woff2);
+    font-weight: 500;
+    
+}
+
+@font-face {
+    font-family: 'TTFors';
+    src: local('TTFors'), url(../fonts/TTFors-DemiBold.woff2);
+    font-weight: 600;
+    
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'TTFors';
+}
