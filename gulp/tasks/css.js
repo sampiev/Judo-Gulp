@@ -7,24 +7,28 @@ import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 const sass = gulpSass(dartSass);
 import browserSync from 'browser-sync'
+import path from '../config/path.js'
+
 
 export default function css() {
     return gulp
     .src([
-        'src/**/*.scss',
+        path.css.src,
         'node_modules/normalize.css/normalize.css'
     ])
     .pipe(plumber({
-        errorHandler: notify.onError("error: <%= error.message %>")
+        errorHandler: notify.onError(error => ({
+            title: "CSS",
+            message: error.message
+        }))
     }))
     .pipe(autoprefixer({
         overrideBrowserslist: ['last 10 versions'], grid: true
     }))
     .pipe(concat('main.min.css'))
     .pipe(sass({
-        outputStyle: 'compressed'
-    })
-    .on('error', sass.logError))
-    .pipe(gulp.dest('app/css'))
+        // outputStyle: 'compressed'
+    }).on('error', sass.logError))
+    .pipe(gulp.dest(path.css.dest))
     .pipe(browserSync.stream())
 }

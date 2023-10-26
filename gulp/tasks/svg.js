@@ -1,6 +1,7 @@
 
 import gulp from 'gulp'
 import svgSprite from 'gulp-svg-sprite'
+import path from '../config/path.js'
 
 const config = {
     mode: {
@@ -13,7 +14,7 @@ const config = {
   };
 
 export default function svg () {
-    return gulp.src('src/svg/**/*.svg')
+    return gulp.src(path.svg.src)
     .pipe(svgSprite(config))
-    .pipe(gulp.dest('app/svg'))
+    .pipe(gulp.dest(path.svg.dest))
 }
