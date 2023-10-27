@@ -2,4 +2,4 @@ const sum = function sum(a,b){
     return a + b
 }
 
-console.log(sum(3,5))
+console.log('I am common',sum(3,5))

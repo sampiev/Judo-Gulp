@@ -1,22 +1,39 @@
-import gulp from 'gulp'
-import fileInclude from 'gulp-file-include'
-import plumber from 'gulp-plumber'
-import notify from "gulp-notify"
-import browserSync from 'browser-sync'
-import path from '../config/path.js'
 
+import notify from 'gulp-notify'
 
-export default function html() {
-  return gulp.src(path.html.src)
-  .pipe(plumber({
-      eerrorHandler: notify.onError(error => ({
-        title: "HTML",
+const plumberSettings = {
+        errorHandler: notify.onError(error => ({
+        title: "JS",
         message: error.message
-      }))
-  }))
-  .pipe(fileInclude())
-  .pipe(gulp.dest(path.html.dest))
-  .pipe(browserSync.stream())
+    }))
+}
+
+const versionSettings = {
+  'value': '%MDS%',
+  'append': {
+      'key': '_v',
+      'cover': 0,
+      'to': ['css', 'js'],
+      'output': {
+        'file': 'version.json'
+      }
+  }
+}
+
+const pugSettings = {
+  pretty: true,
+  verbose: false
+}
+
+export function html() {
+  return global.gulp
+  .src(global.path.src.html)
+  .pipe(global.plugin.pug(pugSettings))
+  .pipe(global.plugin.plumber(plumberSettings))
+  .pipe(global.plugin.fileInclude())
+  .pipe(global.plugin.version(versionSettings))
+  .pipe(global.gulp.dest(global.path.app))
+  .pipe(global.plugin.browserSync.stream())
 }
 
 

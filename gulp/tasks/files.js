@@ -1,8 +1,6 @@
-import gulp from 'gulp'
-import path from '../config/path.js'
 
-export default function files() {
-    return gulp
-        .src(path.files.src)
-        .pipe(gulp.dest(path.files.dest))
+export const files = () => {
+    return global.gulp
+        .src(global.path.src.files)
+        .pipe(global.gulp.dest(global.path.dest.files))
 }

@@ -1,13 +1,10 @@
-import gulp from 'gulp'
-import gulpclean from 'gulp-clean'
-import fs from 'fs'
-import path from '../config/path.js'
 
-export default function clean (done) {
+export function clean (done) {
 
-    if (fs.existsSync(path.dev.clean)) {
-        return gulp.src(path.dev.clean)
-        .pipe(gulpclean());
+    if (global.plugin.fs.existsSync(global.path.app)) {
+        return global.gulp
+        .src(global.path.app)
+        .pipe(global.plugin.clean());
     }
     else {
         done()

@@ -1,8 +1,6 @@
-import gulp from 'gulp'
-import path from '../config/path.js'
 
-export default function fonts() {
-    return gulp
-        .src(path.fonts.src)
-        .pipe(gulp.dest(path.fonts.dest))
+export const fonts = () => {
+    return global.gulp
+        .src(global.path.src.fonts)
+        .pipe(global.gulp.dest(global.path.dest.fonts))
 }

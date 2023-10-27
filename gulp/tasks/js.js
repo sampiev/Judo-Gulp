@@ -1,26 +1,20 @@
-import gulp from 'gulp'
-import plumber from 'gulp-plumber'
+
 import notify from 'gulp-notify'
-import concat from 'gulp-concat'
-import uglify from 'gulp-uglify'
-import browserSync from 'browser-sync'
-import babel from 'gulp-babel'
-import path from '../config/path.js'
 
-
-
-export default function js() {
-    return gulp 
-    .src(path.js.src)
-    .pipe(plumber({
+const plumberSettings = {
         errorHandler: notify.onError(error => ({
-            title: "JS",
-            message: error.message
-        }))
+        title: "JS",
+        message: error.message
     }))
-    .pipe(concat('script.min.js'))
-    .pipe(babel())
-    .pipe(uglify())
-    .pipe(gulp.dest(path.js.dest))
-    .pipe(browserSync.stream())
+}
+
+export function js() {
+    return global.gulp 
+    .src(global.path.src.js)
+    .pipe(global.plugin.plumber(plumberSettings))
+    .pipe(global.plugin.concat('script.min.js'))
+    .pipe(global.plugin.babel())
+    // .pipe(global.plugin.uglify())
+    .pipe(global.gulp.dest(global.path.dest.js))
+    .pipe(global.plugin.browserSync.stream())
 }

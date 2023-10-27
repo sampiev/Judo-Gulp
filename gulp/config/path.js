@@ -1,58 +1,37 @@
 const sourcePath = './src'
-const destinationPath = './dev'
-const resultPath = 'dev/'
+const destinationPath = './app'
 
-export default {
-    
-    root: sourcePath,
+export const path = {
 
-    dev: {
-        clean: resultPath,
-        server: resultPath
+    app: destinationPath,
+
+    src: {
+        html: [sourcePath + '/html/*.pug', sourcePath + '/html/*.html'],
+        css: sourcePath + '/**/*.scss',
+        js: sourcePath + '/**/*.js',
+        files: sourcePath + '/files/**/*.*',
+        fonts: sourcePath + '/fonts/**/*.*',
+        images: sourcePath + '/images/**/*.*',
+        svg: sourcePath + '/svg/**/*.svg',
     },
 
-    html: {
-        src: sourcePath + '/html/**/*.html',
-        watch: sourcePath + '/**/*.html',
-        dest: destinationPath
+    dest: {
+        html: destinationPath, 
+        css: destinationPath + '/css',
+        js: destinationPath + '/js',
+        files: destinationPath + '/files',
+        fonts: destinationPath + '/fonts',
+        images: destinationPath + '/images',
+        svg: destinationPath + '/svg',
     },
 
-    css: {
-        src: sourcePath + '/**/*.scss',
-        watch: sourcePath + '/**/*.scss',
-        dest: destinationPath + '/css'
+    watch: {
+        html: [sourcePath + '/html/**/*.pug', sourcePath + '/html/**/*.html'],
+        css: sourcePath + '/**/*.scss',
+        js: sourcePath + '/**/*.js',
+        files: sourcePath + '/files/**/*.*',
+        fonts: sourcePath + '/fonts/**/*.*',
+        images: sourcePath + '/images/**/*.*',
+        images: sourcePath + '/svg/**/*.svg',
     },
-
-    js: {
-        src: sourcePath + '/**/*.js',
-        watch: sourcePath + '/**/*.js',
-        dest: destinationPath + '/js'
-    },
-
-    files: {
-        src: sourcePath + '/files/**/*.*',
-        watch: sourcePath + '/files/**/*.*',
-        dest: destinationPath + '/files'
-    },
-
-    fonts: {
-        src: sourcePath + '/fonts/**/*.*',
-        watch: sourcePath + '/fonts/**/*.*',
-        dest: destinationPath + '/fonts'
-    },
-
-    images: {
-        src: sourcePath + '/images/**/*.*',
-        watch: sourcePath + '/images/**/*.*',
-        dest: destinationPath + '/images'
-    },
-
-    svg: {
-        src: sourcePath + '/svg/**/*.svg',
-        watch: sourcePath + '/svg/**/*.svg',
-        dest: destinationPath + '/svg'
-    },
-
-
 }
-
